@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace SignalR.EntityLayer.Entities
 {
 	public class Booking
 	{
-		public int BookID { get; set; }
-		public string Name { get; set; }
-		public string phone { get; set; }
-		public string Mail { get; set; }
-		public int PersonCount { get; set; }
-		public DateTime Date { get; set; }
-
-	}
+        public int BookingID { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Mail { get; set; }
+        public int PersonCount { get; set; }
+        public DateTime Date { get; set; }
+    }
 }
