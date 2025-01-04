@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SignalR.DataAccesLayer\SignalR.DataAccesLayer.csproj" />
+  </ItemGroup>
+
 </Project>
