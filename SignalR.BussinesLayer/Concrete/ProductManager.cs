@@ -1,4 +1,5 @@
 ﻿using SignalR.BussinesLayer.Abstract;
+using SignalR.DataAccesLayer.Abstract;
 using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,36 @@ namespace SignalR.BussinesLayer.Concrete
 {
 	public class ProductManager : IProductService
 	{
-		private readonly IProductService _productdal;
+		private readonly IProductDal _productdal;
 
-		public ProductManager(IProductService productService)
+		public ProductManager(IProductDal productdal)
 		{
-			_productdal = productService;
+			_productdal = productdal;
 		}
 
 		public void TAdd(Product entity)
 		{
-			_productdal.TAdd(entity);
+			_productdal.Add(entity);
 		}
 
 		public void TDelete(Product entity)
 		{
-			_productdal.TDelete(entity);
+			_productdal.Delete(entity);
 		}
 
 		public Product TGetByID(int id)
 		{
-			return _productdal.TGetByID(id);
+			return _productdal.GetByID(id);
 		}
 
 		public List<Product> TGetListAll()
 		{
-			return _productdal.TGetListAll();
+			return _productdal.GetListAll();
 		}
 
 		public void TUpdate(Product entity)
 		{
-			_productdal.TUpdate(entity);
+			_productdal.Update(entity);
 		}
 	}
 }
