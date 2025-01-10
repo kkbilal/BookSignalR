@@ -8,12 +8,12 @@ namespace SignalRApi.Mapping
 	{
         public CategoryMapping()
         {
-            CreateMap<Category,CreateCategoryDto>();
-			CreateMap<Category, ResultCategoryDto>();
+            CreateMap<Category,CreateCategoryDto>().ReverseMap();
+			CreateMap<Category, ResultCategoryDto>().ReverseMap();
 
-			CreateMap<Category, GetCategoryDto>();
+			CreateMap<Category, GetCategoryDto>().ReverseMap();
 
-			CreateMap<Category, UpdateCategoryDto>();
+			CreateMap<Category, UpdateCategoryDto>().ReverseMap();
 		
 		}
     }

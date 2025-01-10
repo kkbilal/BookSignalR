@@ -8,12 +8,12 @@ namespace SignalRApi.Mapping
 	{
         public ContactMapping()
         {
-            CreateMap<Contact, UpdateContactDto>();
-			CreateMap<Contact, GetContactDto>();
+            CreateMap<Contact, UpdateContactDto>().ReverseMap();
+			CreateMap<Contact, GetContactDto>().ReverseMap();
 
-			CreateMap<Contact, UpdateContactDto>();
+			CreateMap<Contact, UpdateContactDto>().ReverseMap();
 
-			CreateMap<Contact, CreateContactDto>();
+			CreateMap<Contact, CreateContactDto>().ReverseMap();
 		}
     }
 }

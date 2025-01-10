@@ -1,4 +1,5 @@
-﻿using SignalR.DataAccesLayer.Abstract;
+﻿using Microsoft.EntityFrameworkCore;
+using SignalR.DataAccesLayer.Abstract;
 using SignalR.DataAccesLayer.Concrete;
 using SignalR.DataAccesLayer.Repositories;
 using SignalR.EntityLayer.Entities;
@@ -14,6 +15,13 @@ namespace SignalR.DataAccesLayer.EntityFramework
 	{
 		public EfProductDal(SignalRContext context) : base(context)
 		{
+		}
+
+		public List<Product> GetProductsWithCategories()
+		{
+			var context = new SignalRContext();
+			var values = context.Products.Include(x=>x.Category).ToList();
+			return values;
 		}
 	}
 }
