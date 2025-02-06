@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.BookingDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Mapping

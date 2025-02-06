@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinesLayer.Abstract;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.ContactDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -21,7 +22,7 @@ namespace SignalRApi.Controllers
 		[HttpGet]
 		public IActionResult ListContact()
 		{
-			var value = _mapper.Map < List < ResultCategoryDto >> (_contactService.TGetListAll());
+			var value = _mapper.Map < List <ResultContactDto>> (_contactService.TGetListAll());
 			return Ok(value);
 		}
 		[HttpPost]
@@ -37,7 +38,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Ekleme işlemi yapıldı");
 		}
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public IActionResult DeleteContact(int id) 
 		{
 			var value = _contactService.TGetByID(id);
@@ -58,7 +59,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Güncelleme işlemi yapıldı");
 		}
-		[HttpGet("getContact")]
+		[HttpGet("{id}")]
 		public IActionResult GetContact(int id)
 		{
 			var value = _contactService.TGetByID(id);

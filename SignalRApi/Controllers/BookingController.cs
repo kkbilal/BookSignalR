@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
+
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinesLayer.Abstract;
-using SignalR.DtoLayer.AboutDto;
+
+using SignalR.DtoLayer.BookingDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -21,7 +22,7 @@ namespace SignalRApi.Controllers
 		[HttpGet]
 		public IActionResult ListBooking()
 		{
-			var value = _mapper.Map<List<ResultAboutDto>>(_bookingService.TGetListAll());
+			var value = _mapper.Map<List<ResultBookingDto>>(_bookingService.TGetListAll());
 			return Ok(value);
 		}
 		[HttpPost]
@@ -38,7 +39,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Ekleme işlemi yapıldı");
 		}
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public IActionResult DeleteBooking(int id)
 		{
 			var values = _bookingService.TGetByID(id);
@@ -60,7 +61,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Güncelleme işlemi yapıldı");
 		}
-		[HttpGet("getBooking")]
+		[HttpGet("{id}")]
 		public IActionResult GetBooking(int id)
 		{
 			var value = _bookingService.TGetByID(id);

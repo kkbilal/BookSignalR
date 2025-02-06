@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.ContactDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Mapping
@@ -8,7 +9,7 @@ namespace SignalRApi.Mapping
 	{
         public ContactMapping()
         {
-            CreateMap<Contact, UpdateContactDto>().ReverseMap();
+            CreateMap<Contact, ResultContactDto>().ReverseMap();
 			CreateMap<Contact, GetContactDto>().ReverseMap();
 
 			CreateMap<Contact, UpdateContactDto>().ReverseMap();

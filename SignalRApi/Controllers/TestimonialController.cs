@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinesLayer.Abstract;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.TestimonialDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -39,7 +40,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Ekleme işlemi yapıldı");
 		}
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public IActionResult DeleteTestimonial(int id)
 		{
 			var value = _TestimonialService.TGetByID(id);
@@ -61,7 +62,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Güncelleme işlemi yapıldı");
 		}
-		[HttpGet("getTestimonial")]
+		[HttpGet("{id}")]
 		public IActionResult GetTestimonial(int id)
 		{
 			var value = _TestimonialService.TGetByID(id);

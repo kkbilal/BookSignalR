@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinesLayer.Abstract;
 using SignalR.DtoLayer.AboutDto;
+using SignalR.DtoLayer.DiscountDto;
 using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
@@ -38,7 +39,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Ekleme işlemi yapıldı");
 		}
-		[HttpDelete]
+		[HttpDelete("{id}")]
 		public IActionResult DeleteDiscount(int id)
 		{
 			var value = _discountService.TGetByID(id);
@@ -59,7 +60,7 @@ namespace SignalRApi.Controllers
 			});
 			return Ok("Güncelleme işlemi yapıldı");
 		}
-		[HttpGet("getDiscount")]
+		[HttpGet("{id}")]
 		public IActionResult GetDiscount(int id)
 		{
 			var value = _discountService.TGetByID(id);
