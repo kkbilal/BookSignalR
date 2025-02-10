@@ -38,9 +38,44 @@ namespace SignalR.BussinesLayer.Concrete
 			return _productdal.GetListAll();
 		}
 
+		public int TGetProductCount()
+		{
+			return _productdal.GetProductCount();
+		}
+
 		public List<Product> TGetProductsWithCategories()
 		{
 			return _productdal.GetProductsWithCategories();
+		}
+
+		public int TProductCountByCategoryNameDrink()
+		{
+			return _productdal.ProductCountByCategoryNameDrink();
+		}
+
+		public int TProductCountByCategoryNameHamburger()
+		{
+			return _productdal.ProductCountByCategoryNameHamburger();
+		}
+
+		public decimal TProductPriceAvg()
+		{
+			return _productdal.ProductPriceAvg();
+		}
+
+		public decimal TProductPriceByHamburger()
+		{
+			return _productdal.ProductPriceByHamburger();
+		}
+
+		public decimal TProductPriceMax()
+		{
+			return _productdal.ProductPriceMax();
+		}
+
+		public decimal TProductPriceMin()
+		{
+			return _productdal.ProductPriceMin();
 		}
 
 		public void TUpdate(Product entity)

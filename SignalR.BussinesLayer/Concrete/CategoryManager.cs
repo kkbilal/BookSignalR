@@ -18,6 +18,11 @@ namespace SignalR.BussinesLayer.Concrete
 			_categorydal = categorydal;
 		}
 
+		public int TActiveCategoryCount()
+		{
+			return _categorydal.ActiveCategoryCount();
+		}
+
 		public void TAdd(Category entity)
 		{
 			_categorydal.Add(entity);
@@ -33,9 +38,19 @@ namespace SignalR.BussinesLayer.Concrete
 			return _categorydal.GetByID(id);
 		}
 
+		public int TGetCategoryCount()
+		{
+			return _categorydal.GetCategoryCount();
+		}
+
 		public List<Category> TGetListAll()
 		{
 			return _categorydal.GetListAll(); 
+		}
+
+		public int TPassiveCategoryCount()
+		{
+			return _categorydal.PassiveCategoryCount();
 		}
 
 		public void TUpdate(Category entity)
