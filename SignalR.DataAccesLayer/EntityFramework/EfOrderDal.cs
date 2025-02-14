@@ -18,20 +18,27 @@ namespace SignalR.DataAccesLayer.EntityFramework
 
 		public decimal LastOrderPrice()
 		{
-			var context = new SignalRContext();
+			using var context = new SignalRContext();
 			return context.Orders.OrderByDescending(x => x.OrderId).Take(1).Select(p=>p.TotalPrice).FirstOrDefault();
 		}
 
 		public int OrderActiveCount()
 		{
-			var context = new SignalRContext();
+			using var context = new SignalRContext();
 			return context.Orders.Where(x => x.Description == "Müşteri Masada").Count();
 		}
 
 		public int OrderCount()
 		{
-			var context = new SignalRContext();
+			using var context = new SignalRContext();
 			return context.Orders.Count();
+		}
+
+		public decimal TodayTotalAmount()
+		{
+			//using var context = new SignalRContext();
+			//return context.Orders.Where(x => x.Description == "Hesap Kapatıldı").Where(p => p.Date == DateTime.Parse(DateTime.Now.ToShortDateString())).Sum(y => y.TotalPrice);
+			return 0;
 		}
 	}
 }

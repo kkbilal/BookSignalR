@@ -53,6 +53,11 @@ namespace SignalR.BussinesLayer.Concrete
 			return _orderDal.OrderCount();
 		}
 
+		public decimal TTodayTotalAmount()
+		{
+			return _orderDal.TodayTotalAmount();
+		}
+
 		public void TUpdate(Order entity)
 		{
 			_orderDal.Update(entity);

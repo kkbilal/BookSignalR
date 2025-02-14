@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace SignalR.BussinesLayer.Abstract
 {
-	public interface IOrderService : IGenericService<Order>
+	public interface IMoneyCaseService : IGenericService<MoneyCase>
 	{
-		int TOrderCount();
-		int TOrderActiveCount();
-		decimal TLastOrderPrice();
-		decimal TTodayTotalAmount();
+		decimal TTotalMoneyCaseAmount();
 	}
 }
