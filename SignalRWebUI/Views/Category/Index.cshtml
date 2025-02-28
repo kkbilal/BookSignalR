@@ -31,7 +31,15 @@
                                     <tr>
                                         <td>@item.CategoryId</td>
                                         <td>@item.CategoryName</td>
-                                        <td>@item.Status</td>
+                                        @{if (item.Status == true)
+                                            {
+                                              <td style="color:limegreen">Aktif</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="color:red">Pasif</td>
+                                            }
+                                          }  
                                         <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-outline-danger">Sil</a></td>
 
                                         <td><a href="/Category/UpdateCategory/@item.CategoryId" class="btn btn-outline-success">Güncelle</a></td>

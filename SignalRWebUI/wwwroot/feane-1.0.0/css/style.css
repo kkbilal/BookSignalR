@@ -5,7 +5,12 @@ body {
   background-color: #ffffff;
   overflow-x: hidden;
 }
-
+.my-custom-title {
+    font-family: "Arial", sans-serif; /* Ýstediðin fontu kullan */
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff5733; /* Renk de deðiþtirebilirsin */
+}
 .layout_padding {
   padding: 90px 0;
 }
