@@ -20,12 +20,13 @@ namespace SignalR.BussinesLayer.Concrete
 
 		public void TAdd(Basket entity)
 		{
-			throw new NotImplementedException();
+			 _basketdal.Add(entity);
+			
 		}
 
 		public void TDelete(Basket entity)
 		{
-			throw new NotImplementedException();
+			_basketdal.Delete(entity);
 		}
 
 		public List<Basket> TGetBasketByTableId(int id)
@@ -35,7 +36,7 @@ namespace SignalR.BussinesLayer.Concrete
 
 		public Basket TGetByID(int id)
 		{
-			throw new NotImplementedException();
+			return _basketdal.GetByID(id);
 		}
 
 		public List<Basket> TGetListAll()

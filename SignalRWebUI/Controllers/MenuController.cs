@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using SignalRWebUI.Dtos.BasketDtos;
 using SignalRWebUI.Dtos.ProductDtos;
+using System.Text;
 
 namespace SignalRWebUI.Controllers
 {
@@ -24,5 +26,25 @@ namespace SignalRWebUI.Controllers
             return View(values);
 
         }
-    }
+		[HttpPost]
+		public async Task<IActionResult> AddBasket([FromBody]CreateBasketDto createBasketDto)
+		{
+			using var client = _httpClientFactory.CreateClient();
+
+            var jsonData = JsonConvert.SerializeObject(createBasketDto);
+
+            var stringContent = new StringContent(jsonData,Encoding.UTF8,"application/json");
+
+            var responseMessage = await client.PostAsync("https://localhost:7284/api/Baskets",stringContent);
+
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return Json(new { succes = false, message = "Sepete Ekleme Başarısız Oldu" });
+            }
+		}
+	}
 }
