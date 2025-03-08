@@ -33,11 +33,20 @@
                                     <tr>
                                         <td>@item.TestimonialId</td>
                                         <td>@item.Name</td>
-                                        <td>@item.Status</td>
+                                        @{
+                                            if (item.Status == true)
+                                            {
+                                                <td style="color:limegreen">Aktif</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="color:red">Pasif</td>
+                                            }
+                                        }
 
-                                        <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger">Sil</a></td>
+                                        <td><a href="/Testimonial/DeleteTestimonial/@item.TestimonialId" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
 
-                                        <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-success">Güncelle</a></td>
+                                        <td><a href="/Testimonial/UpdateTestimonial/@item.TestimonialId" class="btn btn-outline-success"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                 }
 

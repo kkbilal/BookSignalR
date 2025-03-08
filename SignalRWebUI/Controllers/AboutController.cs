@@ -40,7 +40,10 @@ namespace SignalRWebUI.Controllers
 			var jsonData = JsonConvert.SerializeObject(createAboutDto);
 			StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 			var responseMessage = await client.PostAsync("https://localhost:7284/api/About", stringContent);
-			if (responseMessage.IsSuccessStatusCode) { return RedirectToAction("Index"); }
+			if (responseMessage.IsSuccessStatusCode) 
+			{ 
+				return RedirectToAction("Index"); 
+			}
 			return View();
 		}
 
