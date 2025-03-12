@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SignalR.BussinesLayer.Abstract;
+using SignalR.DtoLayer.MenuTableDto;
+using SignalR.EntityLayer.Entities;
 
 namespace SignalRApi.Controllers
 {
@@ -9,16 +12,61 @@ namespace SignalRApi.Controllers
 	public class MenuTablesController : ControllerBase
 	{
 		private readonly ITableMenuService _tableMenuService;
-
-		public MenuTablesController(ITableMenuService tableMenuService)
-		{
-			_tableMenuService = tableMenuService;
-		}
-		[HttpGet("MenuTableCount")]
+        private readonly IMapper _mapper;
+        public MenuTablesController(ITableMenuService tableMenuService, IMapper mapper)
+        {
+            _tableMenuService = tableMenuService;
+            _mapper = mapper;
+        }
+        [HttpGet("MenuTableCount")]
 		public ActionResult MenuTableCount()
 		{
 			return Ok(_tableMenuService.TTableMenuCount());
 
 		}
-	}
+        [HttpGet]
+        public IActionResult ListMenuTable()
+        {
+            var value = _mapper.Map<List<ResultMenuTableDto>>(_tableMenuService.TGetListAll());
+            return Ok(value);
+        }
+        [HttpPost]
+        public IActionResult CreateMenuTable(CreateMenuTableDto createMenuTableDto)
+        {
+
+            _tableMenuService.TAdd(new TableMenu()
+            {
+                
+                Name= createMenuTableDto.Name,
+                Status=false,
+                
+            });
+            return Ok("masa eklendi");
+        }
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMenuTable(int id)
+        {
+            var value = _tableMenuService.TGetByID(id);
+            _tableMenuService.TDelete(value);
+            return Ok("masa silindi");
+        }
+        [HttpPut]
+        public IActionResult UpdateMenuTable(UpdateMenuTableDto updateMenuTableDtoDto)
+        {
+
+            _tableMenuService.TUpdate(new TableMenu()
+            {
+                TableMenuId = updateMenuTableDtoDto.TableMenuId,
+                Name = updateMenuTableDtoDto.Name,
+                Status = updateMenuTableDtoDto.Status,
+            });
+            return Ok("masa güncellendi");
+        }
+        [HttpGet("{id}")]
+        public IActionResult GetupdatecreateMenuTableDtoDto(int id)
+        {
+            var value = _tableMenuService.TGetByID(id);
+            return Ok(value);
+        }
+    }
 }

@@ -1,0 +1,71 @@
+﻿@model RegisterDto
+@{
+	Layout = null;
+}
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Yeni Kullanıcı Kaydı</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/colorlib-regform-7/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="~/colorlib-regform-7/css/style.css">
+</head>
+<body>
+
+    <div class="main">
+
+        <!-- Sign up form -->
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Kayıt Ol</h2>
+                        <form method="post" class="register-form" id="register-form">
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Name"  id="name" placeholder="Ad" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Surname"  id="name" placeholder="Soyad" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" asp-for="Username" id="name" placeholder="Kullanıcı Adı" />
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" asp-for="Mail" id="email" placeholder="Email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" asp-for="Password" id="pass" placeholder="Şifre" />
+                            </div>
+                            
+
+                            <div class="form-group form-button">
+                                <input type="submit" id="signup" class="form-submit" value="Kayıt Ol" />
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="~/colorlib-regform-7/images/signup-image.jpg" alt="sing up image"></figure>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+    <!-- JS -->
+    <script src="~/colorlib-regform-7/vendor/jquery/jquery.min.js"></script>
+    <script src="~/colorlib-regform-7/js/main.js"></script>
+</body>
+</html>
