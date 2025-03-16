@@ -1,7 +1,8 @@
-﻿@model List<ResultFeatureDto>
+﻿@model List<ResultSliderDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
 }
 
 
@@ -33,8 +34,9 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
+                                    count++;
                                     <tr>
-                                        <td>@item.FeatureId</td>
+                                        <th>@count</th>
 										<td>@item.Title1</td>
 										<td>@item.Title2</td>
 										<td>@item.Title3</td>
@@ -44,9 +46,9 @@
                                         
                                         <td>@item.Description3</td>
 
-                                        <td><a href="/Feature/DeleteFeature/@item.FeatureId" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
+                                        <td><a href="/Slider/DeleteSlider/@item.SliderId" class="btn btn-outline-danger"><i class="fa fa-trash"></i></a></td>
 
-                                        <td><a href="/Feature/UpdateFeature/@item.FeatureId" class="btn btn-outline-success"><i class="fa fa-edit"></i></a></td>
+                                        <td><a href="/Slider/UpdateSlider/@item.SliderId" class="btn btn-outline-success"><i class="fa fa-edit"></i></a></td>
                                     </tr>
                                 }
 
@@ -54,7 +56,7 @@
                             </tbody>
                         </table>
 
-                        <td><a href="/Feature/CreateFeature/" class="btn btn-outline-primary">Yeni Öne Çıkan</a></td>
+                        <td><a href="/Slider/CreateSlider/" class="btn btn-outline-primary">Yeni Öne Çıkan</a></td>
                     </div>
                 </div>
 

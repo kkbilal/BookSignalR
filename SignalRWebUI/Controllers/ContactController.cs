@@ -53,7 +53,7 @@ namespace SignalRWebUI.Controllers
 			}
 			return View();
 		}
-
+		[HttpGet]
 		public async Task<IActionResult> UpdateContact(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
