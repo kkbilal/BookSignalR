@@ -37,7 +37,7 @@ namespace SignalRApi.Controllers
 				TableMenuId = z.TableMenuId,
 				Price = z.Price,
 				ProductId = z.ProductId,
-				TotalPrice = z.TotalPrice,
+				TotalPrice = z.Count*z.Price,
 				ProductName = z.Product.ProductName,
 			}).ToList();
 			return Ok(values);
@@ -50,9 +50,9 @@ namespace SignalRApi.Controllers
 			{
 				ProductId = createBasketDto.ProductId,
 				Count = 1,
-				TableMenuId = 7,
+				TableMenuId = 8,
 				Price = context.Products.Where(x=>x.ProductId==createBasketDto.ProductId).Select(y=>y.Price).FirstOrDefault(),
-				TotalPrice=0
+				TotalPrice=createBasketDto.Count*createBasketDto.Price
 			});
 			return Ok();
 		}
