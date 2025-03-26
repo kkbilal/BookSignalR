@@ -1,0 +1,92 @@
+﻿@model List<ResulTastyApi>
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+
+@await Component.InvokeAsync("_UILayoutHeadComponentPartial")
+
+<body class="sub_page">
+
+	@await Component.InvokeAsync("_MenuNavbarComponentPartial")
+
+	<br />
+	<div class="container-fluid">
+		<div class="row px-xl-5">
+			<div class="col-12">
+				<nav class="breadcrumb bg-dark mb-30"
+					 style="border-radius: 8px; padding: 12px 20px; background: linear-gradient(135deg, #343a40, #212529); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
+					<a class="breadcrumb-item text-white" href="/Default/Index"
+					   style="text-decoration: none; transition: color 0.3s ease;">
+						Anasayfa
+					</a>
+					<a class="breadcrumb-item text-white" 
+					   style="text-decoration: none; transition: color 0.3s ease;">
+						Api Listesi
+					</a>
+					<span class="breadcrumb-item active"
+						  style="color: #ffc107; font-weight: bold;">
+						Tasty Api
+					</span>
+				</nav>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row px-xl-5">
+			<div class="col-lg-12 table-responsive mb-5">
+				<table class="table table-light table-borderless table-hover text-center mb-0" style="border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+					<thead class="thead-dark">
+						<tr>
+							<th style="padding: 12px; text-align: center;">#</th>
+							<th style="padding: 12px; text-align: center;">Ürün Adı</th>
+							<th style="padding: 12px; text-align: center;">Hazırlama Süresi</th>
+							<th style="padding: 12px; text-align: center;">Tarifi İzle</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td><img src="@item.thumbnail_url" style="width:50px;height:50px" /></td>
+							<td>@item.Name</td>
+							@{
+								if (item.total_time_minutes == 0)
+								{
+									<td>12</td>
+								}
+								else
+								{
+									<td>@item.total_time_minutes</td>
+								}
+							}
+							
+							<td><a href="@item.original_video_url" class="btn btn-warning">Tarifi İzle</a></td>
+						</tr>
+					}</tbody>
+				</table>
+
+			</div>
+			
+		</div>
+	</div>
+
+	<!-- end food section -->
+	<!-- footer section -->
+	@await Component.InvokeAsync("_UILayoutFooterComponentPartial")
+	<!-- footer section -->
+	@await Component.InvokeAsync("_UILayoutScriptComponentPartial")
+
+
+
+
+</body>
+
+</html>

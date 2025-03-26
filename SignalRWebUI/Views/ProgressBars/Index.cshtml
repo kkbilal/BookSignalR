@@ -38,6 +38,44 @@
 				connection.on("TableMenuCount", (tableCountvalue) => {
 					$("#TableMenuCount").text(tableCountvalue)
 				});
+				connection.on("ReceiveProductCount", (value) => {
+					console.log(value)
+					$("#totalProductCount").empty();
+					$("#totalProductCount").append(`
+
+								 <div class="d-flex justify-content-between mb-1">
+									<span class="text-muted">Toplam Ürün Sayısı</span>
+															<span class="text-muted fw-bold">${value}</span>
+								 </div>
+								 <div class="progress mb-2" style="height: 7px;">
+																				 <div class="progress-bar bg-success" role="progressbar" style="width:${value}%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="${value}%"></div>
+								 
+				 				</div> 
+					
+					`)
+
+				});
+				connection.on("ReceiveCategoryCount", (value1) => {
+					$("#categorycount").empty();
+					$("#categorycount").append(`<div class="d-flex justify-content-between mb-1">
+													<span class="text-muted">Toplam Kategori Sayısı</span>
+																<span class="text-muted fw-bold"> ${value1}</span>
+												</div>
+												<div class="progress mb-2" style="height: 7px;">
+																			<div class="progress-bar bg-info" role="progressbar" style="width: ${value1}%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="${value1}%"></div>
+												</div>`)
+				});
+				connection.on("OrderCount", (value2) => {
+					$("#ordercount").empty();
+					$("#ordercount").append(`<div class="d-flex justify-content-between mb-1">
+													<span class="text-muted">Toplam Sipariş Sayısı</span>
+																			<span class="text-muted fw-bold"> ${value2}</span>
+												</div>
+												<div class="progress mb-2" style="height: 7px;">
+																									<div class="progress-bar bg-primary" role="progressbar" style="width: ${value2}%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="${value2}%"></div>
+												</div>`)
+				});
+				
 			});
 		</script>
 
@@ -63,42 +101,16 @@
 					<div class="col-md-5">
 						<div class="card">
 							<div class="card-body">
-								<div class="progress-card">
-									<div class="d-flex justify-content-between mb-1">
-										<span class="text-muted">Profit</span>
-										<span class="text-muted fw-bold"> $3K</span>
-									</div>
-									<div class="progress mb-2" style="height: 7px;">
-										<div class="progress-bar bg-success" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="78%"></div>
-									</div>
-								</div>
-								<div class="progress-card">
-									<div class="d-flex justify-content-between mb-1">
-										<span class="text-muted">Orders</span>
-										<span class="text-muted fw-bold"> 576</span>
-									</div>
-									<div class="progress mb-2" style="height: 7px;">
-										<div class="progress-bar bg-info" role="progressbar" style="width: 65%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="65%"></div>
-									</div>
-								</div>
-								<div class="progress-card">
-									<div class="d-flex justify-content-between mb-1">
-										<span class="text-muted">Tasks Complete</span>
-										<span class="text-muted fw-bold"> 70%</span>
-									</div>
-									<div class="progress mb-2" style="height: 7px;">
-										<div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="70%"></div>
-									</div>
-								</div>
-								<div class="progress-card">
-									<div class="d-flex justify-content-between mb-1">
-										<span class="text-muted">Open Rate</span>
-										<span class="text-muted fw-bold"> 60%</span>
-									</div>
-									<div class="progress mb-2" style="height: 7px;">
-										<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" data-toggle="tooltip" data-placement="top" title="60%"></div>
-									</div>
-								</div>
+								<div class="progress-card" id="totalProductCount"></div>
+									
+								
+								<div class="progress-card" id="categorycount"></div>
+									
+								
+								<div class="progress-card" id="ordercount"></div>
+									
+								
+								
 							</div>
 						</div>
 					</div>

@@ -1,6 +1,14 @@
-﻿namespace SignalRApi.Mapping
+﻿using AutoMapper;
+using SignalR.DtoLayer.BasketDto;
+using SignalR.EntityLayer.Entities;
+
+namespace SignalRApi.Mapping
 {
-	public class BasketMapping
+	public class BasketMapping : Profile
 	{
-	}
+        public BasketMapping()
+        {
+			CreateMap<Basket, CreateBasketDto>().ReverseMap();
+		}
+    }
 }

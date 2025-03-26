@@ -36,6 +36,11 @@ namespace SignalRApi.Controllers
 		{
 			return Ok(_ProductService.TProductCountByCategoryNameHamburger());
 		}
+		[HttpGet("GetLast9Products")]
+		public IActionResult GetLast9Products() 
+		{
+			return Ok(_ProductService.TGetLast9Products());
+		}
 		[HttpGet("DrinkProductCount")]
 		public IActionResult DrinkProductCount()
 		{
@@ -81,16 +86,8 @@ namespace SignalRApi.Controllers
 		[HttpPost]
 		public IActionResult CreateProduct(CreateProductDto createProductDto)
 		{
-
-			_ProductService.TAdd(new Product()
-			{
-				ProductName = createProductDto.ProductName,
-				Description = createProductDto.Description,
-				ImageUrl = createProductDto.ImageUrl,
-				Price = createProductDto.Price,
-				Status = createProductDto.Status,
-				CategoryId = createProductDto.CategoryId,
-			});
+			var values = _mapper.Map<Product>(createProductDto);
+			_ProductService.TAdd(values);
 			return Ok("Ekleme işlemi yapıldı");
 		}
 		[HttpDelete("{id}")]
@@ -103,24 +100,16 @@ namespace SignalRApi.Controllers
 		[HttpPut]
 		public IActionResult UpdateProduct(UpdateProductDto updateProductDto)
 		{
+			var values = _mapper.Map<Product>(updateProductDto);
 
-			_ProductService.TUpdate(new Product()
-			{
-				ProductId = updateProductDto.ProductId,
-				Description = updateProductDto.Description,
-				ImageUrl = updateProductDto.ImageUrl,
-				Price = updateProductDto.Price,
-				ProductName = updateProductDto.ProductName,
-				Status = updateProductDto.Status,
-				CategoryId = updateProductDto.CategoryId,
-			});
+			_ProductService.TUpdate(values);
 			return Ok("Güncelleme işlemi yapıldı");
 		}
 		[HttpGet("{id}")]
 		public IActionResult GetProduct(int id)
 		{
 			var value = _ProductService.TGetByID(id);
-			return Ok(value);
+			return Ok(_mapper.Map<GetProductDto>(value));
 		}
 		
 	}

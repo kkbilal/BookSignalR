@@ -27,17 +27,9 @@ namespace SignalRApi.Controllers
 		[HttpPost]
 		public IActionResult CreateMessage(CreateMessageDto createMessageDto)
 		{
-
-			_messageservice.TAdd(new Message()
-			{
-				Name = createMessageDto.Name,
-				Mail = createMessageDto.Mail,
-				Phone = createMessageDto.Phone,
-				Subject = createMessageDto.Subject,
-				MessageContent = createMessageDto.MessageContent,
-				Date = DateTime.Now,
-				Status = false
-			});
+			createMessageDto.Status = false;
+			var value = _mapper.Map<Message>(createMessageDto);
+			_messageservice.TAdd(value);
 			return Ok("mesaj eklendi");
 		}
 		[HttpDelete("{id}")]
@@ -50,19 +42,8 @@ namespace SignalRApi.Controllers
 		[HttpPut]
 		public IActionResult UpdateMessage(UpdateMessageDto updateMessageDto)
 		{
-
-			_messageservice.TUpdate(new Message()
-			{
-				Name =	updateMessageDto.Name,
-				MessageId = updateMessageDto.MessageId,
-				MessageContent= updateMessageDto.MessageContent,
-				Date = updateMessageDto.Date,
-				Status = false,
-				Subject = updateMessageDto.Subject,
-				Phone = updateMessageDto.Phone,
-				Mail = updateMessageDto.Mail,
-
-			});
+			var value = _mapper.Map<Message>(updateMessageDto);
+			_messageservice.TUpdate(value);
 			return Ok("mesaj güncellendi");
 		}
 		[HttpGet("{id}")]

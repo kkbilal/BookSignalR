@@ -9,17 +9,11 @@
             </h2>
         </div>
 
-        <ul class="filters_menu">
-            <li class="active" data-filter="*">Hepsi</li>
-            <li data-filter=".burger">Hamburger</li>
-            <li data-filter=".pizza">Pizza</li>
-            <li data-filter=".pasta">Makarna</li>
-            <li data-filter=".fries">Kızartmalar</li>
-        </ul>
+        
 
         <div class="filters-content">
             <div class="row grid">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Take(9))
                 {
                     <div class="col-sm-6 col-lg-4 all pizza">
                         <div class="box">
@@ -103,8 +97,8 @@
             </div>
         </div>
         <div class="btn-box">
-            <a href="">
-                View More
+            <a href="/Menu/Index/">
+                Daha Fazlasını Gör
             </a>
         </div>
     </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using SignalRWebUI.Dtos.BasketDtos;
 using SignalRWebUI.Dtos.ProductDtos;
@@ -6,7 +7,8 @@ using System.Text;
 
 namespace SignalRWebUI.Controllers
 {
-	public class MenuController : Controller
+    [AllowAnonymous]
+    public class MenuController : Controller
 	{
         private readonly IHttpClientFactory _httpClientFactory;
 
@@ -19,7 +21,7 @@ namespace SignalRWebUI.Controllers
         public async Task<IActionResult> Index()
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7284/api/Product");
+            var responseMessage = await client.GetAsync("https://localhost:7284/api/Product/ProductListWithCategory");
 
             var jsonData = await responseMessage.Content.ReadAsStringAsync();
             var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
@@ -29,6 +31,7 @@ namespace SignalRWebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddBasket([FromBody]CreateBasketDto createBasketDto)
 		{
+
 			using var client = _httpClientFactory.CreateClient();
 
             var jsonData = JsonConvert.SerializeObject(createBasketDto);

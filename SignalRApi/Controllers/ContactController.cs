@@ -28,18 +28,8 @@ namespace SignalRApi.Controllers
 		[HttpPost]
 		public IActionResult CreateContact(CreateContactDto createContactDto)
 		{
-			
-			_contactService.TAdd(new Contact()
-			{
-				Location = createContactDto.Location,
-				Phone = createContactDto.Phone,
-				Mail = createContactDto.Mail,
-				FooterDescription = createContactDto.FooterDescription,
-				OpenDays = createContactDto.OpenDays,
-				OpenDaysDescription = createContactDto.OpenDaysDescription,
-				OpenHours = createContactDto.OpenHours,
-				FooterTitle = createContactDto.FooterTitle,
-			});
+			var value = _mapper.Map<Contact>(createContactDto);
+			_contactService.TAdd(value);
 			return Ok("Ekleme işlemi yapıldı");
 		}
 		[HttpDelete("{id}")]
@@ -52,26 +42,15 @@ namespace SignalRApi.Controllers
 		[HttpPut]
 		public IActionResult UpdateContact(UpdateContactDto updateContactDto)
 		{
-			
-			_contactService.TUpdate(new Contact()
-			{
-				ContactId = updateContactDto.ContactId,
-				Location = updateContactDto.Location,
-				Phone = updateContactDto.Phone,
-				Mail = updateContactDto.Mail,
-				FooterDescription = updateContactDto.FooterDescription,
-				OpenHours = updateContactDto.OpenHours,
-				OpenDays = updateContactDto.OpenDays,
-				OpenDaysDescription = updateContactDto.OpenDaysDescription,	
-				FooterTitle= updateContactDto.FooterTitle,
-			});
+			var value = _mapper.Map<Contact>(updateContactDto);
+			_contactService.TUpdate(value);
 			return Ok("Güncelleme işlemi yapıldı");
 		}
 		[HttpGet("{id}")]
 		public IActionResult GetContact(int id)
 		{
 			var value = _contactService.TGetByID(id);
-			return Ok(value);	
+			return Ok(_mapper.Map<GetContactDto>(value));	
 		}
 	}
 }

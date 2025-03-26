@@ -13,8 +13,16 @@ namespace SignalR.DataAccesLayer.EntityFramework
 {
 	public class EfProductDal : GenericRepository<Product>, IProductDal
 	{
+		
+
 		public EfProductDal(SignalRContext context) : base(context)
 		{
+		}
+
+		public List<Product> GetLast9Products()
+		{
+			using var context = new SignalRContext();
+			return context.Products.Take(9).ToList();
 		}
 
 		public int GetProductCount()
