@@ -20,7 +20,7 @@ Proje, sürdürülebilirlik ve modülerlik açısından N katmanlı mimariye (En
    <li>Fluent Validation</li>
   <li>AutoMapper</li>
     <li>QRCoder</li>
-  <li>SkiaSharp</li>
+  
     <li>HTML, CSS, JavaScript</li>
     <li>Bootstrap</li>
     <li>Ajax</li>
