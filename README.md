@@ -21,9 +21,7 @@ Proje, sürdürülebilirlik ve modülerlik açısından N katmanlı mimariye (En
   <li>AutoMapper</li>
     <li>QRCoder</li>
   
-    <li>HTML, CSS, JavaScript</li>
-    <li>Bootstrap</li>
-    <li>Ajax</li>
+    
 </ul>
 
 ## Proje Görselleri
