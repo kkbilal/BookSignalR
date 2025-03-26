@@ -31,6 +31,14 @@ Proje, sürdürülebilirlik ve modülerlik açısından N katmanlı mimariye (En
 
 ### UI
 ![localhost_7212_Default_Index (1)](https://github.com/user-attachments/assets/cc219a9b-c2f8-4ff1-be1b-9b9871c5fb1e)
+#### Sepet
+![image](https://github.com/user-attachments/assets/349be3bf-9e9c-4f62-9736-f9904aba83da)
+#### Tarifler
+![image](https://github.com/user-attachments/assets/e40bd056-a724-4f93-b654-cb9872de3091)
+#### Menü
+![image](https://github.com/user-attachments/assets/0391bc1e-e433-4ccc-bacd-84778b310285)
+#### Rezervasyon
+![image](https://github.com/user-attachments/assets/36bb4f55-a4c7-4cad-a507-d2939667a570)
 
 ### Login
 ![image](https://github.com/user-attachments/assets/e93171e2-7a32-4999-a270-9b3119ab83b8)
